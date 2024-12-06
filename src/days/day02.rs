@@ -18,7 +18,7 @@ fn sol1(reports: &Vec<Report>) -> u64 {
     reports.iter().filter(|report| is_safe_1(report)).count() as u64
 }
 
-fn sol2(reports: &Vec<Report>) -> u64 {
+fn sol2(_reports: &Vec<Report>) -> u64 {
     0
 }
 
@@ -41,7 +41,7 @@ impl FromIterator<u64> for Report {
     }
 }
 
-pub fn is_safe_1(report: &Report) -> bool {
+fn is_safe_1(report: &Report) -> bool {
     let mut direction = Undetermined;
     for window in report.levels.windows(2) {
         if let [left, right] = window {
@@ -63,12 +63,12 @@ fn get_difference(left: u64, right: u64) -> u64 {
     max(left, right) - min(left, right)
 }
 
-pub fn is_safe_2(report: &Report) -> bool {
-    let mut directions: Vec<Direction> = Vec::new();
-    let mut differences: Vec<Direction> = Vec::new();
+fn is_safe_2(report: &Report) -> bool {
+    let mut _directions: Vec<Direction> = Vec::new();
+    let mut _differences: Vec<Direction> = Vec::new();
     for window in report.levels.windows(2) {
         if let [left, right] = window {
-            let direction = get_direction(*left, *right);
+            let _direction = get_direction(*left, *right);
         }
     }
     false
