@@ -1,4 +1,7 @@
 use std::fmt::{Display, Formatter, Result};
+use std::sync::Once;
+use env_logger::Builder;
+use log::{info, LevelFilter};
 use Solution::*;
 
 #[derive(Clone)]
@@ -66,4 +69,12 @@ impl From<&str> for Solution {
     fn from(sol: &str) -> Self {
         Self::Str(sol.to_owned())
     }
+}
+
+static INIT: Once = Once::new();
+pub fn initialize_logging() {
+    INIT.call_once(|| {
+        Builder::new().filter_level(LevelFilter::Trace).init();
+        info!("Logging initialized");
+    })
 }
